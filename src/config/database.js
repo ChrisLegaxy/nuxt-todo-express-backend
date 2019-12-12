@@ -1,14 +1,10 @@
 /* Database Connection */
-
 const config = require("./config");
 const mongoose = require("mongoose");
-const chalk = require("chalk");
+const chalk = require("../plugins/chalk");
 
-/* Console Colors */
-let connected = chalk.bold.cyan;
-let error = chalk.bold.yellow;
-let disconnected = chalk.bold.red;
-let termination = chalk.bold.magenta;
+/* Mongoose Settings */
+mongoose.set("useCreateIndex", true);
 
 // MongoDB Atlas
 const connectionString = `mongodb+srv://${config.db.USER}:${config.db.PASSWORD}@maincluster-covtz.mongodb.net/test?retryWrites=true&w=majority`;
@@ -16,30 +12,30 @@ const connectionString = `mongodb+srv://${config.db.USER}:${config.db.PASSWORD}@
 module.exports = {
   mongoose,
   connect: () => {
-    mongoose.Promise = Promise
+    mongoose.Promise = Promise;
     return mongoose.connect(connectionString, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
   },
   disconnect: () => {
-    mongoose.Promise = Promise
+    mongoose.Promise = Promise;
     return mongoose.disconnect();
   },
   onConnected: () => {
     return mongoose.connection.on("open", () => {
-      console.log(connected("Database Connected Successfully"));
+      console.log(chalk.info("Database Connected Successfully"));
     });
   },
-  onError: (err) => {
+  onError: err => {
     // return mongoose.connection.on("error", err => {
     //   console.log(connected(err));
     // });
-    console.log(error(err.reason))
+    console.log(chalk.warning(err.reason));
   },
   onDisconnected: () => {
     return mongoose.connection.on("disconnected", () => {
-      console.log(disconnected("Database Disconnected"));
+      console.log(chalk.def("Database Disconnected"));
     });
   }
 };

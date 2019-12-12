@@ -1,9 +1,10 @@
-const express = require("express");
-
-const auth = express.Router();
-
+/* Imports */
 const login = require("./login");
+const register = require("./register");
 
-auth.get("/login", login);
+const auth = {
+  login,
+  register
+};
 
 module.exports = auth;

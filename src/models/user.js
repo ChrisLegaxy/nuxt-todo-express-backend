@@ -1,5 +1,6 @@
 /* Node Package Imports */
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 /* Schema */
 const userSchema = new mongoose.Schema({
@@ -11,6 +12,20 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     require: true
+  }
+});
+
+userSchema.pre("save", function(next) {
+  if (this.password && this.isModified("password")) {
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(this.password, salt, (err, hash) => {
+        if (err) {
+          next(err);
+        }
+        this.password = hash;
+        next();
+      });
+    });
   }
 });
 

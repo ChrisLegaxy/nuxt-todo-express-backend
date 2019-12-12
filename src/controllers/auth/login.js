@@ -1,3 +1,17 @@
+const User = require("../../models/User");
+
 module.exports = (req, res) => {
-  res.json("Hello Form Login");
+  const user = new Promise((resolve, reject) => {
+    User.findOne({ username: req.body.username }, (err, user) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(user);
+      }
+    });
+  });
+
+  user.then().catch(err => {
+    res.status;
+  });
 };
