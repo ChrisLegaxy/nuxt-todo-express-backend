@@ -7,6 +7,8 @@ const dev = {
     PORT: process.env.PORT || 5000
   },
   db: {
+    USER: process.env.DB_USER || "admin",
+    PASSWORD: process.env.DB_PASSWORD || "qwerty@999",
     SERVER: process.env.DB_HOST || "",
     DATABASE: process.env.DB_NAME || ""
   },

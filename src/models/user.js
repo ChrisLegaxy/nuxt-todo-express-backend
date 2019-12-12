@@ -1,6 +1,8 @@
+/* Node Package Imports */
 const mongoose = require("mongoose");
 
-const User = new mongoose.Schema({
+/* Schema */
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     require: true,
@@ -12,4 +14,4 @@ const User = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("User", User);
+module.exports = mongoose.model("User", userSchema);
