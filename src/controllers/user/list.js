@@ -14,10 +14,15 @@ module.exports = (req, res) => {
     .then(users => {
       res.status(200).json({
         success: true,
-        users
+        message: "All records of users",
+        data: users
       });
     })
     .catch(err => {
-      res.json(err);
+      res.json({
+        success: false,
+        message: "There was an issue requesting for all records of users",
+        error: err
+      });
     });
 };

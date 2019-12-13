@@ -1,8 +1,11 @@
 /* Configuration File */
-
 const env = process.env.NODE_ENV || "dev";
 
+/* Development */
 const dev = {
+  api: {
+    ENDPOINT: "/api/v1"
+  },
   app: {
     PORT: process.env.PORT || 5000
   },
@@ -17,6 +20,7 @@ const dev = {
   }
 };
 
+/* Testing */
 const test = {
   app: {
     ENV: process.env.NODE_ENV || "",
