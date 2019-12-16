@@ -1,7 +1,10 @@
+/* Node Package Imports */
 const express = require("express");
 
+/* Initiate Express Router */
 const routes = express.Router();
 
+/* Route Imports */
 const auth = require("./auth");
 const user = require("./user");
 

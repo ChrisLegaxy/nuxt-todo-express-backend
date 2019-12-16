@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const passport = require("passport")
 
-/* Imports */
+/* Local Imports */
 const config = require("./src/config/config");
 const routes = require("./src/routes");
 

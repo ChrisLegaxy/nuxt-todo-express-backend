@@ -1,11 +1,13 @@
+/* Node Package Imports */
 const express = require("express");
 
+/* Initiate Express Router */
 const authRoute = express.Router();
 
-// const passport = require('passport')
-
+/* Authentication */
 const auth = require("../../middleware/auth");
 
+/* Controller */
 const authController = require("../../controllers/auth");
 
 // auth.post("/register", authController.register);

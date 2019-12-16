@@ -1,6 +1,6 @@
 /* Node Package Imports */
 
-/* Imports */
+/* Local Imports */
 const app = require("./app");
 const config = require("./src/config/config");
 const database = require("./src/config/database");

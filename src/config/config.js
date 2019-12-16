@@ -16,7 +16,7 @@ const dev = {
     DATABASE: process.env.DB_NAME || ""
   },
   token: {
-    SECRET_KEY: ""
+    SECRET_KEY: "mysecretkey"
   }
 };
 
@@ -31,7 +31,7 @@ const test = {
     DATABASE: process.env.DB_NAME || ""
   },
   token: {
-    SECRET_KEY: ""
+    SECRET_KEY: "mysecretkey"
   }
 };
 
